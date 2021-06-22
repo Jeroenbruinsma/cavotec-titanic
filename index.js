@@ -24,6 +24,21 @@ app.get("/people", async (req, res) => {
     res.status(500)
   }
 });
+app.get("/people/:id", async (req, res) => {
+  const {id} = req.params
+  try{
+    const person = await passengers.findOne({ where: {id}})
+    if(!person){
+      res.status(404).end();
+      return
+    }
+    res.json(person)
+  }
+  catch(err){
+    console.log(err)
+    res.status(500).end()
+  }
+});
 
 app.listen(port, () => {
   console.log(`Running at http://localhost:${port}`);
