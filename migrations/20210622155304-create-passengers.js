@@ -24,7 +24,7 @@ module.exports = {
         allowNull: true
       },
       survived: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING, //ugly, done for aws glue import
         allowNull: false
       },
       passengerClass: {
