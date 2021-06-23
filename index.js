@@ -2,12 +2,14 @@ const express = require("express");
 const morgan = require("morgan");
 const passengers = require("./models").passengers;
 const {validateInput} = require("./validations")
+const cors = require("cors")
 
 const app = express();
 const port = 5000;
 
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors());
 
 
 app.get("/", (req, res) => {
