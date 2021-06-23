@@ -54,10 +54,10 @@ app.post("/people", async (req, res) => {
   if (validateInput( age, "number", null , res )) return null
   if (validateInput( siblingsOrSpousesAboard, "number", null , res )) return null
   if (validateInput( parentsOrChildrenAboard, "number", null , res )) return null
-  if (validateInput( fare, "number", null , res )) return null
+  if (validateInput( parseFloat(fare), "number", null , res )) return null
 
 try{
-  const person = await passengers.create({survived,passengerClass,name,sex,age,siblingsOrSpousesAboard,parentsOrChildrenAboard,fare})
+  const person = await passengers.create({survived,passengerClass,name,sex,age,siblingsOrSpousesAboard,parentsOrChildrenAboard,fare: fare})
     res.json(person)
   }
   catch(err){
