@@ -1,6 +1,5 @@
 const express = require("express");
 const morgan = require("morgan");
-const db = require("./models");
 const passengers = require("./models").passengers;
 
 const app = express();
@@ -33,6 +32,21 @@ app.get("/people/:id", async (req, res) => {
       return
     }
     res.json(person)
+  }
+  catch(err){
+    console.log(err)
+    res.status(500).end()
+  }
+});
+app.delete("/people/:id", async (req, res) => {
+  const {id} = req.params
+  try{
+    const destroyCount = await passengers.destroy({ where: {id}})
+    if(destroyCount !== 1){
+      res.status(404).end();
+      return
+    }
+    res.status(200).end()
   }
   catch(err){
     console.log(err)
