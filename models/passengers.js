@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     sex: DataTypes.STRING,
     survived: DataTypes.BOOLEAN,
     passengerClass: DataTypes.INTEGER,
-    siblingsSpousesAboard: DataTypes.INTEGER,
-    parentsChildrenAboard: DataTypes.INTEGER,
+    siblingsOrSpousesAboard: DataTypes.INTEGER,
+    parentsOrChildrenAboard: DataTypes.INTEGER,
     fare: DataTypes.FLOAT
   }, {
     sequelize,

@@ -8,8 +8,8 @@ module.exports = {
       sex: "male",
       survived: true,
       passengerClass: 1,
-      siblingsSpousesAboard: 1,
-      parentsChildrenAboard: 1,
+      siblingsOrSpousesAboard: 1,
+      parentsOrChildrenAboard: 1,
       fare: "22.29",
     }]);
   },

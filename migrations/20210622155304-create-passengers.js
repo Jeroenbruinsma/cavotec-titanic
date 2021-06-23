@@ -28,11 +28,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      siblingsSpousesAboard: {
+      siblingsOrSpousesAboard: {
         type: Sequelize.INTEGER,
         allowNull: true
       },
-      parentsChildrenAboard: {
+      parentsOrChildrenAboard: {
         type: Sequelize.INTEGER,
         allowNull: true
       },
