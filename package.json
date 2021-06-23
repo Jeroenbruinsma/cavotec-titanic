@@ -10,7 +10,11 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test_db": "node db/authenticate.js"
+    "createDB": "npx sequelize-cli db:create",
+    "buildDB": "npx sequelize-cli db:migrate",
+    "emptyDB": "npx sequelize-cli db:migrate:undo",
+    "seedDB": "npx sequelize-cli db:seed:all",
+    "dropDB": "npx sequelize-cli db:drop"
   },
   "devDependencies": {
     "sequelize-cli": "^6.2.0"
