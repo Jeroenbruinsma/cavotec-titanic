@@ -48,7 +48,7 @@ app.post("/people", async (req, res) => {
   if (validateInput( survived, "boolean", null , res )) return null
   if (validateInput( passengerClass, "number", [1,2,3] , res )) return null
   if (validateInput( name, "string", null , res )) return null
-  if (validateInput( sex, "string", ["male", "female"] , res )) return null
+  if (validateInput( sex, "string", ["male", "female", "other"] , res )) return null
   if (validateInput( age, "number", null , res )) return null
   if (validateInput( siblingsOrSpousesAboard, "number", null , res )) return null
   if (validateInput( parentsOrChildrenAboard, "number", null , res )) return null
