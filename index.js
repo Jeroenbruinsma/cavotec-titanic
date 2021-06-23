@@ -23,30 +23,7 @@ app.get("/people", async (req, res) => {
   }
   catch(err){
     console.log(err)
-    res.status(500)
-  }
-});
-
-
-
-app.post("/people", async (req, res) => {
-  const {survived,passengerClass,name,sex,age,siblingsOrSpousesAboard,parentsOrChildrenAboard,fare} = req.body
-  if (validateInput( survived, "boolean", null , res )) return null
-  if (validateInput( passengerClass, "number", [1,2,3] , res )) return null
-  if (validateInput( name, "string", null , res )) return null
-  if (validateInput( sex, "string", ["male", "female"] , res )) return null
-  if (validateInput( age, "number", null , res )) return null
-  if (validateInput( siblingsOrSpousesAboard, "number", null , res )) return null
-  if (validateInput( parentsOrChildrenAboard, "number", null , res )) return null
-  if (validateInput( fare, "number", null , res )) return null
-
-try{
-  const person = await passengers.create({survived,passengerClass,name,sex,age,siblingsOrSpousesAboard,parentsOrChildrenAboard,fare})
-    res.json(person)
-  }
-  catch(err){
-    console.log(err)
-    res.status(500)
+    res.status(500).end()
   }
 });
 
@@ -65,6 +42,55 @@ app.get("/people/:id", async (req, res) => {
     res.status(500).end()
   }
 });
+
+app.post("/people", async (req, res) => {
+  const {survived,passengerClass,name,sex,age,siblingsOrSpousesAboard,parentsOrChildrenAboard,fare} = req.body
+  if (validateInput( survived, "boolean", null , res )) return null
+  if (validateInput( passengerClass, "number", [1,2,3] , res )) return null
+  if (validateInput( name, "string", null , res )) return null
+  if (validateInput( sex, "string", ["male", "female"] , res )) return null
+  if (validateInput( age, "number", null , res )) return null
+  if (validateInput( siblingsOrSpousesAboard, "number", null , res )) return null
+  if (validateInput( parentsOrChildrenAboard, "number", null , res )) return null
+  if (validateInput( fare, "number", null , res )) return null
+
+try{
+  const person = await passengers.create({survived,passengerClass,name,sex,age,siblingsOrSpousesAboard,parentsOrChildrenAboard,fare})
+    res.json(person)
+  }
+  catch(err){
+    console.log(err)
+    res.status(500).end()
+  }
+});
+
+app.put("/people/:id", async (req, res) => {
+  const {id} = req.params
+  const {survived,passengerClass,name,sex,age,siblingsOrSpousesAboard,parentsOrChildrenAboard,fare} = req.body
+  if (validateInput( survived, "boolean", null , res )) return null
+  if (validateInput( passengerClass, "number", [1,2,3] , res )) return null
+  if (validateInput( name, "string", null , res )) return null
+  if (validateInput( sex, "string", ["male", "female"] , res )) return null
+  if (validateInput( age, "number", null , res )) return null
+  if (validateInput( siblingsOrSpousesAboard, "number", null , res )) return null
+  if (validateInput( parentsOrChildrenAboard, "number", null , res )) return null
+  if (validateInput( fare, "number", null , res )) return null
+
+try{
+  const person = await passengers.findOne({ where: {id}})
+  if(!person){
+    res.status(404).end();
+    return
+  }
+  const personUpdated = await person.update({survived,passengerClass,name,sex,age,siblingsOrSpousesAboard,parentsOrChildrenAboard,fare})
+    res.json(personUpdated)
+  }
+  catch(err){
+    console.log(err)
+    res.status(500).end()
+  }
+});
+
 app.delete("/people/:id", async (req, res) => {
   const {id} = req.params
   try{
