@@ -9,6 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   passengers.init({
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: sequelize.UUIDV4,
+      allowNull: false,
+      primaryKey: true
+    },
     name: DataTypes.STRING,
     age: DataTypes.INTEGER,
     sex: DataTypes.STRING,
