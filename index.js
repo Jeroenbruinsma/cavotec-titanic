@@ -76,7 +76,7 @@ app.put("/people/:id", async (req, res) => {
   if (validateInput( age, "number", null , res )) return null
   if (validateInput( siblingsOrSpousesAboard, "number", null , res )) return null
   if (validateInput( parentsOrChildrenAboard, "number", null , res )) return null
-  if (validateInput( fare, "number", null , res )) return null
+  if (validateInput( parseFloat(fare), "number", null , res )) return null
 
 try{
   const person = await passengers.findOne({ where: {id}})
